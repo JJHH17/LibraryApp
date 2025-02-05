@@ -8,7 +8,9 @@ function Book(title, author, pages) {
     this.pages = pages;
 }
 
-// Function to build book
-function addBookToLibrary() {
-
+// Function to build book, calls the book object
+function addBookToLibrary(title, author, pages) {
+    const book = new Book(title, author, pages);
+    // Stores into array to later be pushed into myLibrary
+    const newBook = [book];
 }
