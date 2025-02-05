@@ -1,3 +1,17 @@
 * {
     margin: 0;
 }
+
+#title {
+    text-align: center;
+    margin: 10px;
+}
+
+#cards {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    border: solid black;
+    background-color: purple;
+}
