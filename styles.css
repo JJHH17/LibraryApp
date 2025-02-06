@@ -15,5 +15,10 @@ html {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     border: solid black;
-    background-color: purple;
+    background-color: lightpink;
+    gap: 5px;
+}
+
+#cards > div {
+    border: 1px solid black;
 }
