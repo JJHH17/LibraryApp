@@ -30,8 +30,6 @@ function printItems() {
     }
 }
 
-printItems()
-
 // Handles "new book" button 
 const addBook = document.querySelector("#addBook");
 // Selects sidebar where we'll add a new form on button press
@@ -82,7 +80,8 @@ addBook.addEventListener("click", () => {
 
     // Logs item to array if submit button is clicked
     submit.addEventListener("click", () => {
-    alert('Hello');
-})
+        const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
+        printItems();
+    })
 
 })
