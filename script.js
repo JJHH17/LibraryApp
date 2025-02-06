@@ -80,7 +80,9 @@ addBook.addEventListener("click", () => {
         const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
         printItems();
     })
-    // Find a way to remove previous data once submitted
+    // Removes button when clicked 
+    sidebar.removeChild(addBook);
+    // re-add button when submit button is clicked 
 
 })
 
