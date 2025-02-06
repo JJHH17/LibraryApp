@@ -15,3 +15,15 @@ function addBookToLibrary(title, author, pages) {
     myLibrary.push(book);
 }
 
+// This will be used to later display the book entries to the page
+const cardContainer = document.querySelector("#cards");
+
+const harryPotter = addBookToLibrary("Harry Potter", "JK Rowling", 100);
+const lordOfRings = addBookToLibrary("LOTR", "Tolkien", 1000);
+
+// Loops through array, adds a card to card container
+function printItems() {
+    for (const item of myLibrary) {
+        console.log(item);
+    }
+}
