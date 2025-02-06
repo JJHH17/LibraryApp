@@ -46,8 +46,11 @@ addBook.addEventListener("click", () => {
 
     // creates title entry point
     const titleTitle = document.createElement("label");
-    titleTitle.innerHTML = 'Book Title';
+    titleTitle.innerHTML = "Book Title";
     const bookTitle = document.createElement("input");
+    bookTitle.type = "text";
+    bookTitle.name = "Book Title"
+    bookTitle.placeholder = "Book Title";
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
 
@@ -55,6 +58,9 @@ addBook.addEventListener("click", () => {
     const authorTitle = document.createElement("label");
     authorTitle.innerHTML = 'Book Author';
     const bookAuthor = document.createElement("input");
+    bookAuthor.type = "text";
+    bookAuthor.name = "Book Author";
+    bookAuthor.placeholder = "Book Author";
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
 
@@ -62,6 +68,9 @@ addBook.addEventListener("click", () => {
     const pageTitle = document.createElement("label");
     pageTitle.innerHTML = 'Pages';
     const bookPages = document.createElement("input");
+    bookPages.type = "number";
+    bookPages.name = "Book Pages";
+    bookPages.placeholder = "Book Pages";
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
 
