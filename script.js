@@ -43,16 +43,30 @@ addBook.addEventListener("click", () => {
     const newForm = document.createElement("form");
     // adds form to sidebar
     sidebar.appendChild(newForm);
+
     // creates title entry point
+    const titleTitle = document.createElement("label");
+    titleTitle.innerHTML = 'Book Title';
     const bookTitle = document.createElement("input");
+    newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
+
     // creates author entry point
+    const authorTitle = document.createElement("label");
+    authorTitle.innerHTML = 'Book Author';
     const bookAuthor = document.createElement("input");
+    newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
+
     // creates pages entry point
+    const pageTitle = document.createElement("label");
+    pageTitle.innerHTML = 'Pages';
     const bookPages = document.createElement("input");
+    newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
+
     // Creates a submission button
     const submit = document.createElement("button");
+    submit.innerHTML = 'Submit';
     newForm.appendChild(submit);
 })
