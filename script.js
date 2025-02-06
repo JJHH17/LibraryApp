@@ -24,6 +24,10 @@ const lordOfRings = addBookToLibrary("LOTR", "Tolkien", 1000);
 // Loops through array, adds a card to card container
 function printItems() {
     for (const item of myLibrary) {
-        console.log(item);
+        const card = document.createElement("div");
+        card.textContent = `Title: ${item.title} Author: ${item.author} Pages: ${item.pages}`;
+        cardContainer.appendChild(card);
     }
 }
+
+printItems();
