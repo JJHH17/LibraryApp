@@ -39,7 +39,20 @@ const sidebar = document.querySelector("#sidebar");
 
 // Generates form to allow user to enter new book
 addBook.addEventListener("click", () => {
-    const newForm = document.createElement("div");
-    newForm.innerHTML = 'Hello';
+    // creates form
+    const newForm = document.createElement("form");
+    // adds form to sidebar
     sidebar.appendChild(newForm);
+    // creates title entry point
+    const bookTitle = document.createElement("input");
+    newForm.appendChild(bookTitle);
+    // creates author entry point
+    const bookAuthor = document.createElement("input");
+    newForm.appendChild(bookAuthor);
+    // creates pages entry point
+    const bookPages = document.createElement("input");
+    newForm.appendChild(bookPages);
+    // Creates a submission button
+    const submit = document.createElement("button");
+    newForm.appendChild(submit);
 })
