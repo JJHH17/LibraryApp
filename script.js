@@ -33,7 +33,7 @@ const cardContainer = document.querySelector("#cards");
 // Prints brand new items (resolves duplicate bug) 
 function printSingleItem() {
     const card = document.createElement("div");
-    card.innerHTML = 'Title: ' + myLibrary.title + '<br>Author: ' + myLibrary.author + '<br>Pages: ' + myLibrary.pages;
+    card.innerHTML = 'Title: ' + // FIX THIS!!! ensure it prints the values
     cardContainer.appendChild(card);
 }
 
