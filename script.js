@@ -18,14 +18,25 @@ function addBookToLibrary(title, author, pages) {
 // This will be used to later display the book entries to the page
 const cardContainer = document.querySelector("#cards");
 
-// Loops through array, adds a card to card container
-function printItems() {
-    for (const item of myLibrary) {
-        const card = document.createElement("div");
-        card.innerHTML = 'Title: ' + item.title + '<br>Author: ' + item.author + '<br>Pages: ' + item.pages;
-        cardContainer.appendChild(card);
-    }
+
+// TODO - Decide whether this is needed or not now we loop through single items (loop unneeded)
+
+// // Loops through array, adds a card to card container
+// function printItems() {
+//     for (const item of myLibrary) {
+//         const card = document.createElement("div");
+//         card.innerHTML = 'Title: ' + item.title + '<br>Author: ' + item.author + '<br>Pages: ' + item.pages;
+//         cardContainer.appendChild(card);
+//     }
+// }
+
+// Prints brand new items (resolves duplicate bug) 
+function printSingleItem() {
+    const card = document.createElement("div");
+    card.innerHTML = 'Title: ' + myLibrary.title + '<br>Author: ' + myLibrary.author + '<br>Pages: ' + myLibrary.pages;
+    cardContainer.appendChild(card);
 }
+
 
 // Handles "new book" button 
 const addBook = document.querySelector("#addBook");
@@ -46,6 +57,8 @@ addBook.addEventListener("click", () => {
     bookTitle.type = "text";
     bookTitle.name = "Book Title"
     bookTitle.placeholder = "Book Title";
+    // make mandatory
+
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
 
@@ -56,6 +69,8 @@ addBook.addEventListener("click", () => {
     bookAuthor.type = "text";
     bookAuthor.name = "Book Author";
     bookAuthor.placeholder = "Book Author";
+    // make mandatory field
+
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
 
@@ -66,22 +81,25 @@ addBook.addEventListener("click", () => {
     bookPages.type = "number";
     bookPages.name = "Book Pages";
     bookPages.placeholder = "Book Pages";
+    // make mandatory 
+    
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
 
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
-    submit.type = "button";
+    submit.type = "reset";
     newForm.appendChild(submit);
 
     // Logs item to array if submit button is clicked
     submit.addEventListener("click", () => {
         const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
-        printItems();
+        printSingleItem();
     })
     // Removes button when clicked 
     sidebar.removeChild(addBook);
+    // Reset forms when submitted
     // re-add button when submit button is clicked 
 
 })
