@@ -76,6 +76,13 @@ addBook.addEventListener("click", () => {
 
     // Creates a submission button
     const submit = document.createElement("button");
-    submit.innerHTML = 'Submit';
+    submit.innerHTML = "Submit";
+    submit.type = "button";
     newForm.appendChild(submit);
+
+    // Logs item to array if submit button is clicked
+    submit.addEventListener("click", () => {
+    alert('Hello');
+})
+
 })
