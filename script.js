@@ -31,3 +31,15 @@ function printItems() {
 }
 
 printItems()
+
+// Handles "new book" button 
+const addBook = document.querySelector("#addBook");
+// Selects sidebar where we'll add a new form on button press
+const sidebar = document.querySelector("#sidebar");
+
+// Generates form to allow user to enter new book
+addBook.addEventListener("click", () => {
+    const newForm = document.createElement("div");
+    newForm.innerHTML = 'Hello';
+    sidebar.appendChild(newForm);
+})
