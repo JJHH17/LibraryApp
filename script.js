@@ -33,7 +33,9 @@ const cardContainer = document.querySelector("#cards");
 // Prints brand new items (resolves duplicate bug) 
 function printSingleItem() {
     const card = document.createElement("div");
-    card.innerHTML = 'Title: ' + // FIX THIS!!! ensure it prints the values
+    // Uses pop to print the last element added
+    const newBook = myLibrary.pop();
+    card.innerHTML = newBook.title + newBook.author + newBook.pages;
     cardContainer.appendChild(card);
 }
 
@@ -99,9 +101,7 @@ addBook.addEventListener("click", () => {
     })
     // Removes button when clicked 
     sidebar.removeChild(addBook);
-    // Reset forms when submitted
-    // re-add button when submit button is clicked 
-
 })
 
 // prevent user from clicking "Add new book" multiple times filling page...
+// Add a limit for quantity, maybe set to 20 or so books, add info to page
