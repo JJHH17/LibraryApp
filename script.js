@@ -18,27 +18,14 @@ function addBookToLibrary(title, author, pages) {
 // This will be used to later display the book entries to the page
 const cardContainer = document.querySelector("#cards");
 
-
-// TODO - Decide whether this is needed or not now we loop through single items (loop unneeded)
-
-// // Loops through array, adds a card to card container
-// function printItems() {
-//     for (const item of myLibrary) {
-//         const card = document.createElement("div");
-//         card.innerHTML = 'Title: ' + item.title + '<br>Author: ' + item.author + '<br>Pages: ' + item.pages;
-//         cardContainer.appendChild(card);
-//     }
-// }
-
 // Prints brand new items (resolves duplicate bug) 
 function printSingleItem() {
     const card = document.createElement("div");
     // Uses pop to print the last element added
     const newBook = myLibrary.pop();
-    card.innerHTML = newBook.title + newBook.author + newBook.pages;
+    card.innerHTML = 'Title: ' + newBook.title + '<br>Author: ' + newBook.author + '<br>Pages: ' + newBook.pages;
     cardContainer.appendChild(card);
 }
-
 
 // Handles "new book" button 
 const addBook = document.querySelector("#addBook");
