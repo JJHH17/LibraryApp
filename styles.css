@@ -6,14 +6,15 @@ html {
 #container {
     display: grid;
     grid-template-columns: 0.5fr repeat(3, 1fr);
-    grid-template-rows: 0.5fr repeat(3, 100px);
+    grid-template-rows: 0.5fr repeat(6, 100px);
 }
 
 #sidebar {
     padding: 3rem;
     background-color: white;
     grid-column: 1 / 1;
-    grid-row: 1 / 5;
+    grid-row: 1 / 8;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #title {
@@ -21,6 +22,7 @@ html {
     background-color: white;
     grid-column: 2 / 5;
     grid-row: 1 / 2;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #cards {
@@ -32,7 +34,7 @@ html {
     background-color: lightpink;
     gap: 5px;
     grid-column: 2 / 5;
-    grid-row: 2 / 5;
+    grid-row: 2 / 8;
 }
 
 #cards > div {
