@@ -48,7 +48,7 @@ addBook.addEventListener("click", () => {
     bookTitle.type = "text";
     bookTitle.name = "BookTitle"
     bookTitle.id = "bookTitle";
-    bookTitle.placeholder = "Book Title";
+    bookTitle.placeholder = "Min 1 - Max 20";
 
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
@@ -62,7 +62,7 @@ addBook.addEventListener("click", () => {
     bookAuthor.type = "text";
     bookAuthor.name = "BookAuthor";
     bookAuthor.id = "bookAuthor";
-    bookAuthor.placeholder = "Book Author";
+    bookAuthor.placeholder = "Min 1 - Max 20";
 
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
@@ -76,7 +76,7 @@ addBook.addEventListener("click", () => {
     bookPages.type = "number";
     bookPages.name = "BookPages";
     bookPages.id = "bookPages"
-    bookPages.placeholder = "Book Pages";
+    bookPages.placeholder = "Min 5 - Max 10,000";
     
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
@@ -90,16 +90,23 @@ addBook.addEventListener("click", () => {
     // Logs item to array if submit button is clicked
     submit.addEventListener("click", () => {
         const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
-        
-        // Calls next function to print item
-        printSingleItem();
 
+        // Making fields mandatory - using if statement 
+        if (bookTitle.value.length == 0) {
+            alert("Please enter a Book Title");
+        } else if (bookAuthor.value.length == 0) {
+            alert("Please enter a Book Author");
+        } else if (bookPages.value.length == 0) {
+            alert("Please enter a Book Length in pages.")
+        } else {
+            printSingleItem();
+        }
     })
     // Removes button when clicked 
     sidebar.removeChild(addBook);
 })
 
-// prevent user from clicking "Add new book" multiple times filling page...
+
 // Add a limit for quantity, maybe set to 20 or so books, add info to page
 
 
