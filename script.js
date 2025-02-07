@@ -49,6 +49,7 @@ addBook.addEventListener("click", () => {
     bookTitle.name = "BookTitle"
     bookTitle.id = "bookTitle";
     bookTitle.placeholder = "Min 1 - Max 20";
+    bookTitle.maxLength = 20;
 
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
@@ -63,6 +64,7 @@ addBook.addEventListener("click", () => {
     bookAuthor.name = "BookAuthor";
     bookAuthor.id = "bookAuthor";
     bookAuthor.placeholder = "Min 1 - Max 20";
+    bookAuthor.maxLength = 20;
 
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
@@ -89,7 +91,6 @@ addBook.addEventListener("click", () => {
 
     // Logs item to array if submit button is clicked
     submit.addEventListener("click", () => {
-        const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
 
         // Making fields mandatory - using if statement 
         if (bookTitle.value.length == 0) {
@@ -98,7 +99,10 @@ addBook.addEventListener("click", () => {
             alert("Please enter a Book Author");
         } else if (bookPages.value.length == 0) {
             alert("Please enter a Book Length in pages.")
+        } else if (bookPages.value > 10000) {
+            alert("Please enter a value less than 10,000")
         } else {
+            const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); // Adds to array 
             printSingleItem();
         }
     })
@@ -108,7 +112,3 @@ addBook.addEventListener("click", () => {
 
 
 // Add a limit for quantity, maybe set to 20 or so books, add info to page
-
-
-// TODO - Fix submit button issues, merge into the form, ensure button resets
-// and has fields set to "Required" status
