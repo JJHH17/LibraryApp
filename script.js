@@ -27,7 +27,7 @@ function printSingleItem() {
     cardContainer.appendChild(card);
 }
 
-// Handles "new book" button 
+// Handles "new book" button and form logic
 const addBook = document.querySelector("#addBook");
 // Selects sidebar where we'll add a new form on button press
 const sidebar = document.querySelector("#sidebar");
@@ -49,7 +49,6 @@ addBook.addEventListener("click", () => {
     bookTitle.name = "BookTitle"
     bookTitle.id = "bookTitle";
     bookTitle.placeholder = "Book Title";
-    bookTitle.required = true;
 
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
@@ -64,7 +63,6 @@ addBook.addEventListener("click", () => {
     bookAuthor.name = "BookAuthor";
     bookAuthor.id = "bookAuthor";
     bookAuthor.placeholder = "Book Author";
-    bookAuthor.required = true;
 
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
@@ -79,7 +77,6 @@ addBook.addEventListener("click", () => {
     bookPages.name = "BookPages";
     bookPages.id = "bookPages"
     bookPages.placeholder = "Book Pages";
-    bookPages.required = true;
     
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
@@ -87,13 +84,16 @@ addBook.addEventListener("click", () => {
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
-    submit.type = "submit";
+    submit.type = "reset";
     newForm.appendChild(submit);
 
     // Logs item to array if submit button is clicked
     submit.addEventListener("click", () => {
         const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); 
+        
+        // Calls next function to print item
         printSingleItem();
+
     })
     // Removes button when clicked 
     sidebar.removeChild(addBook);
@@ -101,3 +101,7 @@ addBook.addEventListener("click", () => {
 
 // prevent user from clicking "Add new book" multiple times filling page...
 // Add a limit for quantity, maybe set to 20 or so books, add info to page
+
+
+// TODO - Fix submit button issues, merge into the form, ensure button resets
+// and has fields set to "Required" status
