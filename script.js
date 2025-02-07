@@ -39,38 +39,47 @@ addBook.addEventListener("click", () => {
     // adds form to sidebar
     sidebar.appendChild(newForm);
 
-    // creates title entry point
+    // creates title entry point and label
+    // Label
     const titleTitle = document.createElement("label");
     titleTitle.innerHTML = "Book Title";
+    // Input
     const bookTitle = document.createElement("input");
     bookTitle.type = "text";
-    bookTitle.name = "Book Title"
+    bookTitle.name = "BookTitle"
+    bookTitle.id = "bookTitle";
     bookTitle.placeholder = "Book Title";
-    // make mandatory
+    bookTitle.required = true;
 
     newForm.appendChild(titleTitle);
     newForm.appendChild(bookTitle);
 
-    // creates author entry point
+    // creates author entry point and label
+    // Label
     const authorTitle = document.createElement("label");
     authorTitle.innerHTML = 'Book Author';
+    // Input
     const bookAuthor = document.createElement("input");
     bookAuthor.type = "text";
-    bookAuthor.name = "Book Author";
+    bookAuthor.name = "BookAuthor";
+    bookAuthor.id = "bookAuthor";
     bookAuthor.placeholder = "Book Author";
-    // make mandatory field
+    bookAuthor.required = true;
 
     newForm.appendChild(authorTitle);
     newForm.appendChild(bookAuthor);
 
-    // creates pages entry point
+    // creates pages entry point and label
+    // Label
     const pageTitle = document.createElement("label");
     pageTitle.innerHTML = 'Pages';
+    // Input
     const bookPages = document.createElement("input");
     bookPages.type = "number";
-    bookPages.name = "Book Pages";
+    bookPages.name = "BookPages";
+    bookPages.id = "bookPages"
     bookPages.placeholder = "Book Pages";
-    // make mandatory 
+    bookPages.required = true;
     
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
@@ -78,7 +87,7 @@ addBook.addEventListener("click", () => {
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
-    submit.type = "reset";
+    submit.type = "submit";
     newForm.appendChild(submit);
 
     // Logs item to array if submit button is clicked
