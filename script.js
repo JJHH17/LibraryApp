@@ -11,32 +11,61 @@ function Book(title, author, pages) {
 // Function to build book, calls the book object
 function addBookToLibrary(title, author, pages) {
     const book = new Book(title, author, pages);
-    // Stores into array to later be pushed into myLibrary
-    myLibrary.push(book);
+    myLibrary.push(book); // Stores into array to later be pushed into myLibrary
+    updateDisplay(); // Ensures that UI updates when adding new book
 }
 
 // This will be used to later display the book entries to the page
 const cardContainer = document.querySelector("#cards");
 
 // Prints brand new items (resolves duplicate bug) 
-function printSingleItem() {
+function printSingleItem(book, index) {
     const card = document.createElement("div");
-    // Uses pop to print the last element added
-    const newBook = myLibrary.pop();
-    card.innerHTML = 'Title: ' + newBook.title + '<br>Author: ' + newBook.author + '<br>Pages: ' + newBook.pages;
+    card.setAttribute("data-index", index);
+    card.classList.add("book-card");
+
+    // Prints the card details
+    card.innerHTML = `
+        <strong>Title:</strong> ${book.title} <br>
+        <strong>Author:</strong> ${book.author} <br>
+        <strong>Pages:</strong> ${book.pages} <br>
+    `;
     cardContainer.appendChild(card);
+
+    // Creating and defining the delete button
+    const deleteItem = document.createElement("button");
+    deleteItem.textContent = "Delete";
+    deleteItem.addEventListener("click", () => deleteBook(index));
+    card.appendChild(deleteItem);
+
+    cardContainer.appendChild(card);
+
+    // Keeping temporarily incase above innerHTML doesn't work
+    // card.innerHTML = 'Title: ' + newBook.title + '<br>Author: ' + newBook.author + '<br>Pages: ' + newBook.pages + "<br>";
 }
+
+// Function for deleting book based on index
+function deleteBook(index) {
+    myLibrary.splice(index, 1) // This removes book from array
+    updateDisplay(); // Re renders the UI
+}
+
+// Define update display
+function updateDisplay() {
+    cardContainer.innerHTML = "";
+    myLibrary.forEach((book, index) => printSingleItem(book, index));
+}
+
 
 // Handles "new book" button and form logic
 const addBook = document.querySelector("#addBook");
-// Selects sidebar where we'll add a new form on button press
 const sidebar = document.querySelector("#sidebar");
 
 // Generates form to allow user to enter new book
 addBook.addEventListener("click", () => {
     // creates form
     const newForm = document.createElement("form");
-    // adds form to sidebar
+    newForm.id = "bookForm"; // Assigns ID to form
     sidebar.appendChild(newForm);
 
     // creates title entry point and label
@@ -46,7 +75,6 @@ addBook.addEventListener("click", () => {
     // Input
     const bookTitle = document.createElement("input");
     bookTitle.type = "text";
-    bookTitle.name = "BookTitle"
     bookTitle.id = "bookTitle";
     bookTitle.placeholder = "Min 1 - Max 20";
     bookTitle.maxLength = 20;
@@ -61,7 +89,6 @@ addBook.addEventListener("click", () => {
     // Input
     const bookAuthor = document.createElement("input");
     bookAuthor.type = "text";
-    bookAuthor.name = "BookAuthor";
     bookAuthor.id = "bookAuthor";
     bookAuthor.placeholder = "Min 1 - Max 20";
     bookAuthor.maxLength = 20;
@@ -76,7 +103,6 @@ addBook.addEventListener("click", () => {
     // Input
     const bookPages = document.createElement("input");
     bookPages.type = "number";
-    bookPages.name = "BookPages";
     bookPages.id = "bookPages"
     bookPages.placeholder = "Min 5 - Max 10,000";
     
@@ -86,32 +112,32 @@ addBook.addEventListener("click", () => {
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
-    submit.type = "reset";
+    submit.type = "submit";
     newForm.appendChild(submit);
 
     // Logs item to array if submit button is clicked
-    submit.addEventListener("click", () => {
+    newForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // prevent default submission behaviour
 
-        // Making fields mandatory - using if statement 
-        if (bookTitle.value.length == 0) {
+        // Validation and empty value prevention
+        if (bookTitle.value.trim() === "") {
             alert("Please enter a Book Title");
-        } else if (bookAuthor.value.length == 0) {
+        } else if (bookAuthor.value.trim() === "") {
             alert("Please enter a Book Author");
-        } else if (bookPages.value.length == 0) {
-            alert("Please enter a Book Length in pages.")
-        } else if (bookPages.value > 10000) {
-            alert("Please enter a value less than 10,000")
+        } else if (bookPages.value.trim() === "" || isNaN(bookPages.value)) {
+            alert("Please enter a valid number of pages");
+        } else if (parseInt(bookPages.value) > 10000) {
+            alert("Please enter a valud under 10,000");
         } else {
-            const newItem = addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value); // Adds to array 
-            printSingleItem();
+            // Adds book to library
+            addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value));
+
+            // clears form fields
+            newForm.reset();
+            
         }
     })
-    // Removes button when clicked 
     sidebar.removeChild(addBook);
-
-    // Addition of delete button
-    // Deletes an item when added
-
 
 })
 
