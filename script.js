@@ -108,7 +108,15 @@ addBook.addEventListener("click", () => {
     })
     // Removes button when clicked 
     sidebar.removeChild(addBook);
+
+    // Addition of delete button
+    // Deletes an item when added
+
+
 })
 
 
 // Add a limit for quantity, maybe set to 20 or so books, add info to page
+
+
+// Allow a user to toggle if a book has been "Read" or not
