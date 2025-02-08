@@ -2,19 +2,19 @@
 const myLibrary = [];
 
 // Constuctor for book objects
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = 'No';
+    this.read = read;
 }
 
 // Function to build book, calls the book object
-function addBookToLibrary(title, author, pages) {
+function addBookToLibrary(title, author, pages, read) {
     if (myLibrary.length >= 20) { // Add limit to quantity of books in array
         alert("You can only enter up to 20 books");
     } else {
-        const book = new Book(title, author, pages);
+        const book = new Book(title, author, pages, read);
         myLibrary.push(book); // Stores into array 
         updateDisplay(); // Ensures that UI updates when adding new book
     }
@@ -127,6 +127,9 @@ addBook.addEventListener("click", () => {
     newForm.appendChild(readTitle);
     newForm.appendChild(readFormToggle);
 
+    // Add logic to toggle
+
+
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
@@ -146,9 +149,14 @@ addBook.addEventListener("click", () => {
             alert("Please enter a valid number of pages");
         } else if (parseInt(bookPages.value) > 10000) {
             alert("Please enter a valud under 10,000");
+        } else if (readFormToggle.checked == true) {
+            // Adds book to library
+            addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value), "Yes");
+
+            newForm.reset();
         } else {
             // Adds book to library
-            addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value));
+            addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value), "No");
 
             // clears form fields
             newForm.reset();
