@@ -34,12 +34,29 @@ function printSingleItem(book, index) {
         <strong>Title:</strong> ${book.title} <br>
         <strong>Author:</strong> ${book.author} <br>
         <strong>Pages:</strong> ${book.pages} <br>
-        <strong>Read Status:</strong> ${book.read} <br>
+        <strong>Read Status:</strong> <span class="read-status">${book.read}</span> <br>
     `;
     cardContainer.appendChild(card);
     // Modifying card styling and layout
     card.style.textAlign = "center";
     card.style.padding = "5px";
+
+    // Creating and defining "Read book" toggle
+    const readToggleTitle = document.createElement("label");
+    readToggleTitle.innerHTML = "<strong>Read?</strong>";
+
+    const readToggle = document.createElement("input");
+    readToggle.type = "checkbox";
+    readToggle.checked = book.read === "Yes"; // Dynamically changes based on variable value
+
+    // ReadToggle event listener
+    readToggle.addEventListener("change", () => {
+        book.read = readToggle.checked ? "Yes" : "No";
+        card.querySelector(".read-status").textContent = book.read; // Updates UI value
+    })
+
+    card.appendChild(readToggleTitle);
+    card.appendChild(readToggle);
 
     // Creating and defining the delete button
     const deleteItem = document.createElement("button");
@@ -47,24 +64,12 @@ function printSingleItem(book, index) {
     deleteItem.addEventListener("click", () => deleteBook(index));
     card.appendChild(deleteItem);
 
-    // Creating and defining "Read book" toggle
-    const readToggleTitle = document.createElement("label");
-    readToggleTitle.innerHTML = "Read?";
-
-    const readToggle = document.createElement("input");
-    readToggle.type = "checkbox";
-    readToggle.id = "readToggle";
-
-    card.appendChild(readToggleTitle);
-    card.appendChild(readToggle);
-
     // Add logic to toggle
     if (readToggle == true) {
         book.read === "Yes";
     } else {
         book.read === "No";
     }
-    // FINISH / FIX THIS!!! TODO - ENSURE IT UPDATES LISTING
 
     cardContainer.appendChild(card);
 
