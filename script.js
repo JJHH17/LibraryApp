@@ -57,6 +57,8 @@ function printSingleItem(book, index) {
 
     card.appendChild(readToggleTitle);
     card.appendChild(readToggle);
+    const space = document.createElement("br");
+    card.appendChild(space); // confirm if working
 
     // Creating and defining the delete button
     const deleteItem = document.createElement("button");
@@ -70,9 +72,7 @@ function printSingleItem(book, index) {
     } else {
         book.read === "No";
     }
-
     cardContainer.appendChild(card);
-
 }
 
 // Function for deleting book based on index, feeds from print single book
@@ -151,9 +151,6 @@ addBook.addEventListener("click", () => {
     newForm.appendChild(readTitle);
     newForm.appendChild(readFormToggle);
 
-    // Add logic to toggle
-
-
     // Creates a submission button
     const submit = document.createElement("button");
     submit.innerHTML = "Submit";
@@ -171,8 +168,8 @@ addBook.addEventListener("click", () => {
             alert("Please enter a Book Author");
         } else if (bookPages.value.trim() === "" || isNaN(bookPages.value)) {
             alert("Please enter a valid number of pages");
-        } else if (parseInt(bookPages.value) > 10000) {
-            alert("Please enter a valud under 10,000");
+        } else if (parseInt(bookPages.value) > 10000 || parseInt(bookPages.value) < 5) {
+            alert("Please enter a valud under 10,000 and over 5");
         } else if (readFormToggle.checked == true) {
             // Adds book to library
             addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value), "Yes");
