@@ -10,7 +10,7 @@ function Book(title, author, pages) {
 
 // Function to build book, calls the book object
 function addBookToLibrary(title, author, pages) {
-    if (myLibrary.length >= 20) {
+    if (myLibrary.length >= 20) { // Add limit to quantity of books in array
         alert("You can only enter up to 20 books");
     } else {
         const book = new Book(title, author, pages);
@@ -143,6 +143,10 @@ addBook.addEventListener("click", () => {
     })
     sidebar.removeChild(addBook);
 
+    // Add quantity limit for user on UI
+    const limitFeedback = document.createElement("p");
+    limitFeedback.innerHTML = "You may add up to 20 books";
+    newForm.appendChild(limitFeedback);
 })
 
 
