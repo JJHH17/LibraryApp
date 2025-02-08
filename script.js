@@ -10,9 +10,13 @@ function Book(title, author, pages) {
 
 // Function to build book, calls the book object
 function addBookToLibrary(title, author, pages) {
-    const book = new Book(title, author, pages);
-    myLibrary.push(book); // Stores into array to later be pushed into myLibrary
-    updateDisplay(); // Ensures that UI updates when adding new book
+    if (myLibrary.length >= 20) {
+        alert("You can only enter up to 20 books");
+    } else {
+        const book = new Book(title, author, pages);
+        myLibrary.push(book); // Stores into array 
+        updateDisplay(); // Ensures that UI updates when adding new book
+    }
 }
 
 // This will be used to later display the book entries to the page
@@ -21,7 +25,7 @@ const cardContainer = document.querySelector("#cards");
 // Prints brand new items (resolves duplicate bug) 
 function printSingleItem(book, index) {
     const card = document.createElement("div");
-    card.setAttribute("data-index", index);
+    card.setAttribute("data-index", index); // Allows us to delete items later
     card.classList.add("book-card");
 
     // Prints the card details
@@ -44,7 +48,7 @@ function printSingleItem(book, index) {
     // card.innerHTML = 'Title: ' + newBook.title + '<br>Author: ' + newBook.author + '<br>Pages: ' + newBook.pages + "<br>";
 }
 
-// Function for deleting book based on index
+// Function for deleting book based on index, feeds from print single book
 function deleteBook(index) {
     myLibrary.splice(index, 1) // This removes book from array
     updateDisplay(); // Re renders the UI
