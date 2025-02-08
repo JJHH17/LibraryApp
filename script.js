@@ -37,6 +37,9 @@ function printSingleItem(book, index) {
         <strong>Read Status:</strong> ${book.read} <br>
     `;
     cardContainer.appendChild(card);
+    // Modifying card styling and layout
+    card.style.textAlign = "center";
+    card.style.padding = "5px";
 
     // Creating and defining the delete button
     const deleteItem = document.createElement("button");
@@ -46,7 +49,7 @@ function printSingleItem(book, index) {
 
     // Creating and defining "Read book" toggle
     const readToggleTitle = document.createElement("label");
-    readToggleTitle.innerHTML = "Have you read this book?";
+    readToggleTitle.innerHTML = "Read?";
 
     const readToggle = document.createElement("input");
     readToggle.type = "checkbox";
@@ -55,10 +58,16 @@ function printSingleItem(book, index) {
     card.appendChild(readToggleTitle);
     card.appendChild(readToggle);
 
+    // Add logic to toggle
+    if (readToggle == true) {
+        book.read === "Yes";
+    } else {
+        book.read === "No";
+    }
+    // FINISH / FIX THIS!!! TODO - ENSURE IT UPDATES LISTING
+
     cardContainer.appendChild(card);
 
-    // Keeping temporarily incase above innerHTML doesn't work
-    // card.innerHTML = 'Title: ' + newBook.title + '<br>Author: ' + newBook.author + '<br>Pages: ' + newBook.pages + "<br>";
 }
 
 // Function for deleting book based on index, feeds from print single book
