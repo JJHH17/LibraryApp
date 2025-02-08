@@ -1,4 +1,3 @@
-// Stores list of books
 const myLibrary = [];
 
 // Constuctor for book objects
@@ -11,7 +10,7 @@ function Book(title, author, pages, read) {
 
 // Function to build book, calls the book object
 function addBookToLibrary(title, author, pages, read) {
-    if (myLibrary.length >= 20) { // Add limit to quantity of books in array
+    if (myLibrary.length >= 20) { 
         alert("You can only enter up to 20 books");
     } else {
         const book = new Book(title, author, pages, read);
@@ -58,7 +57,7 @@ function printSingleItem(book, index) {
     card.appendChild(readToggleTitle);
     card.appendChild(readToggle);
     const space = document.createElement("br");
-    card.appendChild(space); // confirm if working
+    card.appendChild(space); 
 
     // Creating and defining the delete button
     const deleteItem = document.createElement("button");
@@ -139,7 +138,7 @@ addBook.addEventListener("click", () => {
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
 
-    // Adding tick box, tweaks "Read status" value
+    // Tweaks "Read status" value
     // Label
     const readTitle = document.createElement("label");
     readTitle.innerHTML = "Have you read this?";
