@@ -44,6 +44,17 @@ function printSingleItem(book, index) {
     deleteItem.addEventListener("click", () => deleteBook(index));
     card.appendChild(deleteItem);
 
+    // Creating and defining "Read book" toggle
+    const readToggleTitle = document.createElement("label");
+    readToggleTitle.innerHTML = "Have you read this book?";
+
+    const readToggle = document.createElement("input");
+    readToggle.type = "checkbox";
+    readToggle.id = "readToggle";
+
+    card.appendChild(readToggleTitle);
+    card.appendChild(readToggle);
+
     cardContainer.appendChild(card);
 
     // Keeping temporarily incase above innerHTML doesn't work
@@ -61,7 +72,6 @@ function updateDisplay() {
     cardContainer.innerHTML = "";
     myLibrary.forEach((book, index) => printSingleItem(book, index));
 }
-
 
 // Handles "new book" button and form logic
 const addBook = document.querySelector("#addBook");
@@ -170,9 +180,3 @@ addBook.addEventListener("click", () => {
     limitFeedback.innerHTML = "You may add up to 20 books";
     newForm.appendChild(limitFeedback);
 })
-
-
-// Add a limit for quantity, maybe set to 20 or so books, add info to page
-
-
-// Allow a user to toggle if a book has been "Read" or not
