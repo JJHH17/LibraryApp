@@ -191,3 +191,7 @@ addBook.addEventListener("click", () => {
     limitFeedback.innerHTML = "You may add up to 20 books";
     newForm.appendChild(limitFeedback);
 })
+
+// Adding Default books to display initially
+addBookToLibrary("Harry Potter", "JK Rowling", "5,009", "Yes");
+addBookToLibrary("Lord of the Rings", "Tolkein", "9,000", "No");
