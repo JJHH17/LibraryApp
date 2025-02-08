@@ -6,6 +6,7 @@ function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.read = 'No';
 }
 
 // Function to build book, calls the book object
@@ -33,6 +34,7 @@ function printSingleItem(book, index) {
         <strong>Title:</strong> ${book.title} <br>
         <strong>Author:</strong> ${book.author} <br>
         <strong>Pages:</strong> ${book.pages} <br>
+        <strong>Read Status:</strong> ${book.read} <br>
     `;
     cardContainer.appendChild(card);
 
@@ -103,15 +105,27 @@ addBook.addEventListener("click", () => {
     // creates pages entry point and label
     // Label
     const pageTitle = document.createElement("label");
-    pageTitle.innerHTML = 'Pages';
+    pageTitle.innerHTML = "Pages";
     // Input
     const bookPages = document.createElement("input");
     bookPages.type = "number";
-    bookPages.id = "bookPages"
+    bookPages.id = "bookPages";
     bookPages.placeholder = "Min 5 - Max 10,000";
     
     newForm.appendChild(pageTitle);
     newForm.appendChild(bookPages);
+
+    // Adding tick box, tweaks "Read status" value
+    // Label
+    const readTitle = document.createElement("label");
+    readTitle.innerHTML = "Have you read this?";
+    // Input
+    const readFormToggle = document.createElement("input");
+    readFormToggle.type = "checkbox";
+    readFormToggle.id = "readFormToggle";
+
+    newForm.appendChild(readTitle);
+    newForm.appendChild(readFormToggle);
 
     // Creates a submission button
     const submit = document.createElement("button");
