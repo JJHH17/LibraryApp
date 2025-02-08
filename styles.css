@@ -15,6 +15,7 @@ html {
     grid-column: 1 / 1;
     grid-row: 1 / 8;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    place-content: center;
 }
 
 #title {
@@ -29,7 +30,7 @@ html {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(20, 2fr);
     border: solid black;
     background-color: lightpink;
     gap: 5px;
