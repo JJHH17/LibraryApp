@@ -168,7 +168,7 @@ addBook.addEventListener("click", () => {
         } else if (bookPages.value.trim() === "" || isNaN(bookPages.value)) {
             alert("Please enter a valid number of pages");
         } else if (parseInt(bookPages.value) > 10000 || parseInt(bookPages.value) < 5) {
-            alert("Please enter a valud under 10,000 and over 5");
+            alert("Please enter a value under 10,000 and over 5");
         } else if (readFormToggle.checked == true) {
             // Adds book to library
             addBookToLibrary(bookTitle.value.trim(), bookAuthor.value.trim(), parseInt(bookPages.value), "Yes");
